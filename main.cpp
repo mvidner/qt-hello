@@ -1,5 +1,6 @@
 #include <QDebug>
 #include <QApplication>
+#include <QInputDialog>
 #include <QPushButton>
 
 #include <QMessageLogContext>
@@ -29,6 +30,12 @@ int main(int argc, char *argv[])
     qInstallMessageHandler(myMessageOutput);
 
     QApplication a(argc, argv);
+
+    bool ok;
+    QString text = QInputDialog::getText(NULL /*parent*/, "Keyboard Test",
+                                         "Type something", QLineEdit::Normal,
+                                         "something", &ok);
+
     QPushButton button("Hello, World!");
     qDebug()    << "Button D" << &button;
     //qWarning()  << "Button W" << button;
