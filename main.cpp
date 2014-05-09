@@ -29,10 +29,8 @@ int main(int argc, char *argv[])
     qInstallMessageHandler(myMessageOutput);
 
     QApplication a(argc, argv);
-    QPushButton button("Hello, World!");
+    QPushButton button("kanji:漢字 hiragana:ひらがな katakana:カタカナ hangeul:한글");
     qDebug()    << "Button D" << &button;
-    //qWarning()  << "Button W" << button;
-    //qCritical() << "Button C" << button;
     button.show();
     return a.exec();
 }
