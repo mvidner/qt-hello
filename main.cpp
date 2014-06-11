@@ -1,6 +1,6 @@
 #include <QDebug>
 #include <QApplication>
-#include <QPushButton>
+#include <QMainWindow>
 
 #include <QMessageLogContext>
 
@@ -29,10 +29,9 @@ int main(int argc, char *argv[])
     qInstallMessageHandler(myMessageOutput);
 
     QApplication a(argc, argv);
-    QPushButton button("Hello, World!");
-    qDebug()    << "Button D" << &button;
-    //qWarning()  << "Button W" << button;
-    //qCritical() << "Button C" << button;
-    button.show();
+
+    QMainWindow m;
+    m.show();
+
     return a.exec();
 }
