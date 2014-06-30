@@ -19,4 +19,4 @@ target_link_libraries(plugin Qt5::Widgets)
 # Tell CMake to create the helloworld executable
 add_executable(helloworld main.cpp)
 # Link the "plugin" (now a shared library)
-target_link_libraries(helloworld plugin)
+target_link_libraries(helloworld dl)
