@@ -5,10 +5,11 @@
 #include "plugin.h"
 
 typedef int (* mainfunc_t)(int, char **);
+void * handle;
 
-int main(int argc, char *argv[])
+mainfunc_t get_plugin_main()
 {
-    void * handle = dlopen("./libplugin.so", RTLD_LAZY);
+    handle = dlopen("./libplugin.so", RTLD_LAZY);
 
     if (!handle) {
         fprintf(stderr, "%s\n", dlerror());
@@ -22,11 +23,25 @@ int main(int argc, char *argv[])
         fprintf(stderr, "%s\n", error);
         exit(EXIT_FAILURE);
     }
+    return plugin_main;
+}
 
-    int ret = (*plugin_main)(argc, argv);
+void sleeper()
+{
+    sleep(3); // seconds
+}
 
+void cleanup()
+{
     dlclose(handle);
     // try triggering the Qt problem already
-    sleep(3); // seconds
+    sleeper();
+}
+
+int main(int argc, char *argv[])
+{
+    mainfunc_t plugin_main = get_plugin_main();
+    int ret = (*plugin_main)(argc, argv);
+    cleanup();
     return ret;
 }
