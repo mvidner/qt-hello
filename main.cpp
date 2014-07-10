@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     a.setLayoutDirection(Qt::RightToLeft);
 
-    QGroupBox *groupBox = new QGroupBox("مرحبا");
+    QGroupBox *groupBox = new QGroupBox("السّلام عليكم");
 
     QRadioButton *radio1 = new QRadioButton("&Radio button 1");
     QRadioButton *radio2 = new QRadioButton("R&adio button 2");
