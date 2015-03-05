@@ -19,3 +19,5 @@ add_executable(helloworld main.cpp)
 
 # Use the Widgets module from Qt 5.
 target_link_libraries(helloworld QtCore QtGui)
+
+install(TARGETS helloworld RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
