@@ -2,31 +2,27 @@
 #include <QApplication>
 #include <QPushButton>
 
-#include <QMessageLogContext>
-
-// http://qt-project.org/doc/qt-5.0/qtcore/qtglobal.html#qInstallMessageHandler
-void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+void myMessageOutput(QtMsgType type, const char * msg)
 {
-    QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
-        fprintf(stderr, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        fprintf(stderr, "Debug: %s\n", msg);
         break;
     case QtWarningMsg:
-        fprintf(stderr, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        fprintf(stderr, "Warning: %s\n", msg);
         break;
     case QtCriticalMsg:
-        fprintf(stderr, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        fprintf(stderr, "Critical: %s\n", msg);
         break;
     case QtFatalMsg:
-        fprintf(stderr, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        fprintf(stderr, "Fatal: %s\n", msg);
         abort();
     }
 }
 
 int main(int argc, char *argv[])
 {
-    qInstallMessageHandler(myMessageOutput);
+    qInstallMsgHandler(myMessageOutput);
 
     QApplication a(argc, argv);
     QPushButton button("Hello, World!");
