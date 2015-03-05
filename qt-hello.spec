@@ -1,7 +1,7 @@
 Name: qt-hello
-Version: 1.0
+Version: 1.1
 Release: 1
-Summary: A trivial Hello World button in Qt5
+Summary: A trivial Hello World button in Qt
 License: MIT
 Group: Development/Tools
 Packager: Martin Vidner <mvidner@suse.com>
@@ -10,7 +10,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Source0: main.cpp
 Source1: CMakeLists.txt
 BuildRequires: cmake
-BuildRequires: libqt5-qtbase-devel
+BuildRequires: libqt4-devel
 
 %description
 
