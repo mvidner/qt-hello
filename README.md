@@ -8,7 +8,8 @@ Build
     cd build
     cmake ..
     make
+    cd ..
 
 Run
 
-    ./helloworld
+    build/helloworld
